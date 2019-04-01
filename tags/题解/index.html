@@ -2,24 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>欢迎来到我的博客 - lxy</title>
+<title>标签: 题解 - lxy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！">
-<meta property="og:type" content="article">
-<meta property="og:title" content="欢迎来到我的博客">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/欢迎来到我的博客/index.html">
+    <meta name="description" content="һֻ�����X�mOier����Զ������">
+<meta property="og:type" content="website">
+<meta property="og:title" content="lxy">
+<meta property="og:url" content="http://yoursite.com/tags/题解/index.html">
 <meta property="og:site_name" content="lxy">
-<meta property="og:description" content="这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！">
+<meta property="og:description" content="һֻ�����X�mOier����Զ������">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/04.jpg">
-<meta property="og:updated_time" content="2019-03-29T13:38:05.245Z">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欢迎来到我的博客">
-<meta name="twitter:description" content="这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！">
-<meta name="twitter:image" content="http://yoursite.com/04.jpg">
+<meta name="twitter:title" content="lxy">
+<meta name="twitter:description" content="һֻ�����X�mOier����Զ������">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
 
@@ -91,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/lxy.png" alt="欢迎来到我的博客" height="28">
+                <img src="/lxy.png" alt="lxy" height="28">
             
             </a>
         </div>
@@ -137,18 +136,29 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">题解</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="/04.jpg" alt="欢迎来到我的博客">
-        </span>
+        <a href="/2019/04/01/P1004-方格取数/" class="image is-7by1">
+            <img class="thumbnail" src="/img1.jpg" alt="P1004 方格取数">
+        </a>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-29T11:39:27.000Z">2019-03-29</time>
+                <time class="level-item has-text-grey" datetime="2019-04-01T10:19:23.000Z">2019-04-01</time>
                 
                 
                 
@@ -157,70 +167,32 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                欢迎来到我的博客
+                <a class="has-link-black-ter" href="/2019/04/01/P1004-方格取数/">P1004 方格取数</a>
             
         </h1>
         <div class="content">
-            <p>这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！</p>
-
+            <hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>设有$N×N$的方格图$(N≤9)$，我们将其中的某些方格中填入正整数，而其他的方格中则放入数字$0$。如下图所示（见样例）:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span> <span class="number">13</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">6</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">7</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span> <span class="number">14</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span> <span class="number">21</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">4</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span> <span class="number">15</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span> <span class="number">14</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">                         B</span><br></pre></td></tr></table></figure></p>
         </div>
         
         
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/01/P1004-方格取数/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">P1004 方格取数</span>
-            </a>
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/04/01/P1004-方格取数/#more">Read more</a>
+                </div>
+            </div>
         </div>
         
         
     </div>
 </div>
+
+
+
+
+
+
 
 
 </div>
@@ -268,7 +240,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        1
                     </p>
                 </div>
             </div>
@@ -431,25 +403,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/29/欢迎来到我的博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/04.jpg" alt="欢迎来到我的博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-29T11:39:27.000Z">2019-03-29</time></div>
-                    <a href="/2019/03/29/欢迎来到我的博客/" class="has-link-black-ter is-size-6">欢迎来到我的博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -466,17 +419,6 @@
             <a class="level is-marginless" href="/archives/2019/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -553,25 +495,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/29/欢迎来到我的博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/04.jpg" alt="欢迎来到我的博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-29T11:39:27.000Z">2019-03-29</time></div>
-                    <a href="/2019/03/29/欢迎来到我的博客/" class="has-link-black-ter is-size-6">欢迎来到我的博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -588,17 +511,6 @@
             <a class="level is-marginless" href="/archives/2019/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -650,7 +562,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/lxy.png" alt="欢迎来到我的博客" height="28">
+                    <img src="/lxy.png" alt="lxy" height="28">
                 
                 </a>
                 <p class="is-size-7">

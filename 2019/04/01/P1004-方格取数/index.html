@@ -2,24 +2,25 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>欢迎来到我的博客 - lxy</title>
+<title>P1004 方格取数 - lxy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！">
+    <meta name="description" content="题目描述设有$N×N$的方格图$(N≤9)$，我们将其中的某些方格中填入正整数，而其他的方格中则放入数字$0$。如下图所示（见样例）:12345678910A  0  0  0  0  0  0  0  0  0  0 13  0  0  6  0  0  0  0  0  0  7  0  0  0  0  0  0 14  0  0  0  0  0 21  0  0  0  4  0  0">
+<meta name="keywords" content="题解,动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎来到我的博客">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/欢迎来到我的博客/index.html">
+<meta property="og:title" content="P1004 方格取数">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/P1004-方格取数/index.html">
 <meta property="og:site_name" content="lxy">
-<meta property="og:description" content="这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！">
+<meta property="og:description" content="题目描述设有$N×N$的方格图$(N≤9)$，我们将其中的某些方格中填入正整数，而其他的方格中则放入数字$0$。如下图所示（见样例）:12345678910A  0  0  0  0  0  0  0  0  0  0 13  0  0  6  0  0  0  0  0  0  7  0  0  0  0  0  0 14  0  0  0  0  0 21  0  0  0  4  0  0">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/04.jpg">
-<meta property="og:updated_time" content="2019-03-29T13:38:05.245Z">
+<meta property="og:image" content="http://yoursite.com/img1.jpg">
+<meta property="og:updated_time" content="2019-04-01T11:35:02.065Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欢迎来到我的博客">
-<meta name="twitter:description" content="这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！">
-<meta name="twitter:image" content="http://yoursite.com/04.jpg">
+<meta name="twitter:title" content="P1004 方格取数">
+<meta name="twitter:description" content="题目描述设有$N×N$的方格图$(N≤9)$，我们将其中的某些方格中填入正整数，而其他的方格中则放入数字$0$。如下图所示（见样例）:12345678910A  0  0  0  0  0  0  0  0  0  0 13  0  0  6  0  0  0  0  0  0  7  0  0  0  0  0  0 14  0  0  0  0  0 21  0  0  0  4  0  0">
+<meta name="twitter:image" content="http://yoursite.com/img1.jpg">
 
 
 
@@ -91,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/lxy.png" alt="欢迎来到我的博客" height="28">
+                <img src="/lxy.png" alt="P1004 方格取数" height="28">
             
             </a>
         </div>
@@ -140,7 +141,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/04.jpg" alt="欢迎来到我的博客">
+            <img class="thumbnail" src="/img1.jpg" alt="P1004 方格取数">
         </span>
     </div>
     
@@ -148,7 +149,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-29T11:39:27.000Z">2019-03-29</time>
+                <time class="level-item has-text-grey" datetime="2019-04-01T10:19:23.000Z">2019-04-01</time>
                 
                 
                 
@@ -157,12 +158,37 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                欢迎来到我的博客
+                P1004 方格取数
             
         </h1>
         <div class="content">
-            <p>这是小蒟蒻搭建的一个小窝，采用 github+hexo+icarus，还在持续更新中。欢迎dalao前来阅读、评论、交换友链！</p>
-
+            <hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>设有$N×N$的方格图$(N≤9)$，我们将其中的某些方格中填入正整数，而其他的方格中则放入数字$0$。如下图所示（见样例）:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span> <span class="number">13</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">6</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">7</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span> <span class="number">14</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span> <span class="number">21</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">4</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span> <span class="number">15</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span> <span class="number">14</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">                         B</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>某人从图的左上角的$A$点出发，可以向下行走，也可以向右走，直到到达右下角的$B$点。在走过的路上，他可以取走方格中的数（取走后的方格中将变为数字$0$）。<br>此人从$A$点到$B$点共走两次，试找出$2$条这样的路径，使得取得的数之和为最大。</p>
+<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p><strong>输入格式</strong></p>
+<p>输入的第一行为一个整数$N$（表示$N×N$的方格图），接下来的每行有三个整数，前两个表示位置，第三个数为该位置上所放的数。一行单独的$0$表示输入结束。</p>
+<p><strong>输出格式</strong></p>
+<p>只需输出一个整数，表示$2$条路径上取得的最大的和。</p>
+<p><strong>输入样例</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span> <span class="number">13</span></span><br><span class="line"><span class="number">2</span> <span class="number">6</span>  <span class="number">6</span></span><br><span class="line"><span class="number">3</span> <span class="number">5</span>  <span class="number">7</span></span><br><span class="line"><span class="number">4</span> <span class="number">4</span> <span class="number">14</span></span><br><span class="line"><span class="number">5</span> <span class="number">2</span> <span class="number">21</span></span><br><span class="line"><span class="number">5</span> <span class="number">6</span>  <span class="number">4</span></span><br><span class="line"><span class="number">6</span> <span class="number">3</span> <span class="number">15</span></span><br><span class="line"><span class="number">7</span> <span class="number">2</span> <span class="number">14</span></span><br><span class="line"><span class="number">0</span> <span class="number">0</span>  <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><strong>输出样例</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">67</span></span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>NOIP 2000 提高组第四题</p>
+<hr>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>动态规划题，考虑四维数组。</p>
+<p>设$f[i][j][k][h]$，表示第一条路径走到$(i,j)$，第二条路径走到$(k,h)$的最优方案，得到动态转移方程：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f[i][j][k][h]=max(f[i<span class="number">-1</span>][j][k<span class="number">-1</span>][h],f[i<span class="number">-1</span>][j][k][h<span class="number">-1</span>],f[i][j<span class="number">-1</span>][k<span class="number">-1</span>][h],f[i][j<span class="number">-1</span>][k][h<span class="number">-1</span>]+num(i,j));</span><br></pre></td></tr></table></figure>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">12</span>][<span class="number">12</span>][<span class="number">12</span>][<span class="number">12</span>],num[<span class="number">12</span>][<span class="number">12</span>],x,y,z;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        num[x][y]=z;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> h=<span class="number">1</span>;h&lt;=n;h++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> A=a[i][j][k][h];</span><br><span class="line">                    <span class="keyword">if</span>(i==k&amp;&amp;j==h)</span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i<span class="number">-1</span>][j][k<span class="number">-1</span>][h]+num[i][j]);</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i<span class="number">-1</span>][j][k<span class="number">-1</span>][h]+num[i][j]+num[k][h]);</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">if</span>(i==k&amp;&amp;j==h)</span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i<span class="number">-1</span>][j][k][h<span class="number">-1</span>]+num[i][j]);</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i<span class="number">-1</span>][j][k][h<span class="number">-1</span>]+num[i][j]+num[k][h]);</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">if</span>(i==k&amp;&amp;j==h)</span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i][j<span class="number">-1</span>][k<span class="number">-1</span>][h]+num[i][j]);</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i][j<span class="number">-1</span>][k<span class="number">-1</span>][h]+num[i][j]+num[k][h]);</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">if</span>(i==k&amp;&amp;j==h)</span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i][j<span class="number">-1</span>][k][h<span class="number">-1</span>]+num[i][j]);</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        a[i][j][k][h]=max(a[i][j][k][h],a[i][j<span class="number">-1</span>][k][h<span class="number">-1</span>]+num[i][j]+num[k][h]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,a[n][n][n][n]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/动态规划/">动态规划</a>, <a class="has-link-grey -link" href="/tags/题解/">题解</a>
+                </div>
+            </div>
         </div>
         
         
@@ -208,21 +234,14 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/01/P1004-方格取数/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">P1004 方格取数</span>
-            </a>
-        </div>
-        
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
     </div>
 </div>
-
-
 </div>
                 
 
@@ -268,7 +287,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        1
                     </p>
                 </div>
             </div>
@@ -431,25 +450,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/29/欢迎来到我的博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/04.jpg" alt="欢迎来到我的博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-29T11:39:27.000Z">2019-03-29</time></div>
-                    <a href="/2019/03/29/欢迎来到我的博客/" class="has-link-black-ter is-size-6">欢迎来到我的博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -466,17 +466,6 @@
             <a class="level is-marginless" href="/archives/2019/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -553,25 +542,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/29/欢迎来到我的博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/04.jpg" alt="欢迎来到我的博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-29T11:39:27.000Z">2019-03-29</time></div>
-                    <a href="/2019/03/29/欢迎来到我的博客/" class="has-link-black-ter is-size-6">欢迎来到我的博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -588,17 +558,6 @@
             <a class="level is-marginless" href="/archives/2019/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -650,7 +609,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/lxy.png" alt="欢迎来到我的博客" height="28">
+                    <img src="/lxy.png" alt="P1004 方格取数" height="28">
                 
                 </a>
                 <p class="is-size-7">
